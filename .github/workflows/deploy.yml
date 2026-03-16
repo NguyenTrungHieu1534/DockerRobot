@@ -2,7 +2,7 @@ name: Docker Build and Push
 
 on:
   push:
-    branches: [ "main" ] # Tự động chạy khi có code mới đẩy lên nhánh main
+    branches: [ "master" ] # Tự động chạy khi có code mới đẩy lên nhánh main
 
 jobs:
   build-and-push:
