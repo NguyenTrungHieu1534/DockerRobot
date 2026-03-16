@@ -26,5 +26,5 @@ jobs:
           context: .                # Chạy Dockerfile ở thư mục gốc
           push: true                # Tự động push sau khi build xong
           tags: |                   # Đặt tags cho image
-            ${{ secrets.DOCKER_USERNAME }}/my-project:latest
-            ${{ secrets.DOCKER_USERNAME }}/my-project:${{ github.sha }}
+            ${{ secrets.DOCKER_USERNAME }}/ngtrunghieu1534:latest
+            ${{ secrets.DOCKER_USERNAME }}/ngtrunghieu1534:${{ github.sha }}
