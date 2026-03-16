@@ -1,11 +1,56 @@
-package com.example.ngtrunghieu.controller;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home - Nguyen Trung Hieu</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+      body {
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        margin: 0;
+        padding: 40px 16px;
+        line-height: 1.6;
+      }
+      main {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 24px;
+        border: 1px solid rgba(127, 127, 127, 0.25);
+        border-radius: 12px;
+      }
+      h1 {
+        margin: 0 0 8px;
+        font-size: 28px;
+      }
+      p {
+        margin: 8px 0;
+      }
+      ul {
+        margin: 8px 0 0 18px;
+      }
+      .muted {
+        opacity: 0.8;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Hi, I’m Nguyen Trung Hieu</h1>
+      <p class="muted">Welcome to my simple homepage.</p>
 
-@Controller
-public class HomeController {
-    @GetMapping("/")
-    public String home() {
-        return "home";
-    }
-}
+      <p><strong>Birthday:</strong> 15/03/2004</p>
+      <p><strong>Gender:</strong> Male</p>
+      <p><strong>Age:</strong> 22 years old</p>
+      <p><strong>School:</strong> 4th year student at HUTECH University</p>
+
+      <p><strong>Hobbies:</strong></p>
+      <ul>
+        <li>Reading manga</li>
+        <li>Playing games</li>
+      </ul>
+    </main>
+  </body>
+</html>
