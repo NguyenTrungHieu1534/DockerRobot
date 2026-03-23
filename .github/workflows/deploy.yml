@@ -31,9 +31,9 @@ jobs:
             
       - name: Triển khai lên DevOps Classroom
         run: |
-          REPO="github.com/nguyentrunghieu1534"
+          # Đây là giá trị lấy từ Docker Hub của bạn trong ảnh
+          REPO="ngtrunghieu1534/ngtrunghieu1534"
           
-          # Sử dụng file tạm để lưu body, tránh lỗi biến môi trường quá dài hoặc ký tự đặc biệt
           RESPONSE_FILE=$(mktemp)
           HTTP_CODE=$(curl -sS -X POST "${{ secrets.DEPLOY_URL }}?repo=$REPO&tag=latest" \
             -o "$RESPONSE_FILE" \
