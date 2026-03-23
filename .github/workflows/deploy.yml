@@ -28,3 +28,30 @@ jobs:
           tags: |                   # Đặt tags cho image
             ${{ secrets.DOCKER_USERNAME }}/ngtrunghieu1534:latest
             ${{ secrets.DOCKER_USERNAME }}/ngtrunghieu1534:${{ github.sha }}
+            
+      - name: Triển khai lên DevOps Classroom
+        run: |
+          REPO="github.com/nguyentrunghieu1534"
+          
+          # Sử dụng file tạm để lưu body, tránh lỗi biến môi trường quá dài hoặc ký tự đặc biệt
+          RESPONSE_FILE=$(mktemp)
+          HTTP_CODE=$(curl -sS -X POST "${{ secrets.DEPLOY_URL }}?repo=$REPO&tag=latest" \
+            -o "$RESPONSE_FILE" \
+            -w "%{http_code}")
+
+          echo "Webhook HTTP Status: $HTTP_CODE"
+          BODY=$(cat "$RESPONSE_FILE")
+
+          if [ "$HTTP_CODE" -lt 200 ] || [ "$HTTP_CODE" -ge 300 ]; then
+            echo "::error::Deploy thất bại với mã lỗi $HTTP_CODE"
+            echo "::group::Chi tiết lỗi từ Webhook"
+            echo "$BODY" | python3 -m json.tool 2>/dev/null || echo "$BODY"
+            echo "::endgroup::"
+            exit 1
+          fi
+
+          echo "Deploy thành công."
+          echo "::group::Chi tiết phản hồi JSON"
+          echo "$BODY" | python3 -m json.tool 2>/dev/null || echo "$BODY"
+          echo "::endgroup::"
+
